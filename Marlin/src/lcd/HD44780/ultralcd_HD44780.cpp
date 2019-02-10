@@ -329,12 +329,13 @@ void MarlinUI::set_custom_characters(const HD44780CharSet screen_charset/*=CHARS
 }
 
 void MarlinUI::init_lcd() {
-
+#define bklt 69
   #if ENABLED(LCD_I2C_TYPE_PCF8575)
     lcd.begin(LCD_WIDTH, LCD_HEIGHT);
     #ifdef LCD_I2C_PIN_BL
       lcd.setBacklightPin(LCD_I2C_PIN_BL, POSITIVE);
       lcd.setBacklight(HIGH);
+        analogWrite (bklt, 255);
     #endif
 
   #elif ENABLED(LCD_I2C_TYPE_MCP23017)

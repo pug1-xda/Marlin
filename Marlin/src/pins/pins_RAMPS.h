@@ -60,7 +60,7 @@
   #define BOARD_NAME "RAMPS 1.4"
 #endif
 
-//
+/*
 // Servos
 //
 #ifdef IS_RAMPS_13
@@ -73,18 +73,18 @@
 #ifndef SERVO3_PIN
   #define SERVO3_PIN        4
 #endif
-
+*/
 //
 // Limit Switches
 //
-#define X_MIN_PIN           3
+#define X_MIN_PIN           14
 #ifndef X_MAX_PIN
-  #define X_MAX_PIN         2
+  #define X_MAX_PIN         -1
 #endif
-#define Y_MIN_PIN          14
-#define Y_MAX_PIN          15
-#define Z_MIN_PIN          18
-#define Z_MAX_PIN          19
+#define Y_MIN_PIN          15
+#define Y_MAX_PIN          -1
+#define Z_MIN_PIN          16
+#define Z_MAX_PIN          17
 
 //
 // Z Probe (when not Z_MIN_PIN)
@@ -98,45 +98,45 @@
 //
 #define X_STEP_PIN         54
 #define X_DIR_PIN          55
-#define X_ENABLE_PIN       38
+#define X_ENABLE_PIN       8
 #ifndef X_CS_PIN
-  #define X_CS_PIN         53
+  #define X_CS_PIN         -1
 #endif
 
 #define Y_STEP_PIN         60
 #define Y_DIR_PIN          61
-#define Y_ENABLE_PIN       56
+#define Y_ENABLE_PIN       8
 #ifndef Y_CS_PIN
-  #define Y_CS_PIN         49
+  #define Y_CS_PIN         -1
 #endif
 
 #define Z_STEP_PIN         46
 #define Z_DIR_PIN          48
-#define Z_ENABLE_PIN       62
+#define Z_ENABLE_PIN       8
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         40
+  #define Z_CS_PIN         -1
 #endif
 
-#define E0_STEP_PIN        26
-#define E0_DIR_PIN         28
-#define E0_ENABLE_PIN      24
+#define E0_STEP_PIN        22
+#define E0_DIR_PIN         23
+#define E0_ENABLE_PIN      8
 #ifndef E0_CS_PIN
-  #define E0_CS_PIN        42
+  #define E0_CS_PIN        -1
 #endif
 
-#define E1_STEP_PIN        36
-#define E1_DIR_PIN         34
-#define E1_ENABLE_PIN      30
+#define E1_STEP_PIN        24
+#define E1_DIR_PIN         25
+#define E1_ENABLE_PIN      8
 #ifndef E1_CS_PIN
-  #define E1_CS_PIN        44
+  #define E1_CS_PIN        -1
 #endif
 
 //
 // Temperature Sensors
 //
-#define TEMP_0_PIN         13   // Analog Input
-#define TEMP_1_PIN         15   // Analog Input
-#define TEMP_BED_PIN       14   // Analog Input
+#define TEMP_0_PIN         62   // Analog Input
+#define TEMP_1_PIN         63   // Analog Input
+#define TEMP_BED_PIN       64   // Analog Input
 
 // SPI for Max6675 or Max31855 Thermocouple
 #if DISABLED(SDSUPPORT)
@@ -166,16 +166,16 @@
 // Heaters / Fans
 //
 #ifndef MOSFET_D_PIN
-  #define MOSFET_D_PIN     -1
+  #define MOSFET_D_PIN     41
 #endif
 #ifndef RAMPS_D8_PIN
-  #define RAMPS_D8_PIN      8
+  #define RAMPS_D8_PIN      38
 #endif
 #ifndef RAMPS_D9_PIN
-  #define RAMPS_D9_PIN      9
+  #define RAMPS_D9_PIN      39
 #endif
 #ifndef RAMPS_D10_PIN
-  #define RAMPS_D10_PIN    10
+  #define RAMPS_D10_PIN    40
 #endif
 
 #define HEATER_0_PIN       RAMPS_D10_PIN
@@ -191,6 +191,8 @@
   #define FAN1_PIN         RAMPS_D8_PIN
 #elif DISABLED(IS_RAMPS_SF)                    // Not Spindle, Fan (i.e., "EFBF" or "EFBE")
   #define HEATER_BED_PIN   RAMPS_D8_PIN
+  #define FAN1_PIN         47
+  #define HEATER_1_PIN     RAMPS_D9_PIN
   #if HOTENDS == 1
     #define FAN1_PIN       MOSFET_D_PIN
   #else
@@ -226,12 +228,12 @@
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN        12
+  #define PS_ON_PIN        11
 #endif
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENABLE_PIN)
   #if NUM_SERVOS <= 1 // try to use servo connector first
-    #define CASE_LIGHT_PIN    6   // MUST BE HARDWARE PWM
+    #define CASE_LIGHT_PIN    44   // MUST BE HARDWARE PWM
   #elif !(ENABLED(ULTRA_LCD) && ENABLED(NEWPANEL) \
       && (ENABLED(PANEL_ONE) || ENABLED(VIKI2) || ENABLED(miniVIKI) || ENABLED(MINIPANEL) || ENABLED(REPRAPWORLD_KEYPAD)))  // try to use AUX 2
     #define CASE_LIGHT_PIN   44   // MUST BE HARDWARE PWM
@@ -448,11 +450,11 @@
 
     #elif ENABLED(LCD_I2C_PANELOLU2)
 
-      #define BTN_EN1           47
-      #define BTN_EN2           43
-      #define BTN_ENC           32
-      #define LCD_SDSS          SDSS
-      #define KILL_PIN          41
+      #define BTN_EN1           32          // M I N E
+      #define BTN_EN2           31          // M I N E
+      #define BTN_ENC           30          // M I N E
+      #define KILL_PIN          49          // M I N E
+      #define BEEPER_PIN        68          // M I N E
 
     #elif ENABLED(LCD_I2C_VIKI)
 
