@@ -180,6 +180,10 @@ void menu_main() {
     MENU_ITEM(submenu, MSG_MOTION, menu_motion);
   }
 
+  #if ENABLED(CUSTOM_USER_MENUS)
+    MENU_ITEM(submenu, MSG_USER_MENU, menu_user);
+  #endif    
+    
   MENU_ITEM(submenu, MSG_TEMPERATURE, menu_temperature);
 
   #if ENABLED(MIXING_EXTRUDER)
@@ -192,9 +196,6 @@ void menu_main() {
 
   MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
 
-  #if ENABLED(CUSTOM_USER_MENUS)
-    MENU_ITEM(submenu, MSG_USER_MENU, menu_user);
-  #endif
 
   #if ENABLED(ADVANCED_PAUSE_FEATURE)
     #if E_STEPPERS == 1 && DISABLED(FILAMENT_LOAD_UNLOAD_GCODES)

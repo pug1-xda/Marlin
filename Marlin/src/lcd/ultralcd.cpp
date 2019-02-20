@@ -144,7 +144,7 @@ millis_t next_button_update_ms;
               filename_scroll_hash = hash;                                   // Save the new hash
               filename_scroll_max = MAX(0, utf8_strlen(theCard.longFilename) - maxlen); // Update the scroll limit
               filename_scroll_pos = 0;                                       // Reset scroll to the start
-              lcd_status_update_delay = 8;                                   // Don't scroll right away
+              lcd_status_update_delay = 5;                                   // Don't scroll right away
             }
             outstr += filename_scroll_pos;
           }
