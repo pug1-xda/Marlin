@@ -180,9 +180,22 @@ void menu_main() {
     MENU_ITEM(submenu, MSG_MOTION, menu_motion);
   }
 
+  MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
+    
   #if ENABLED(CUSTOM_USER_MENUS)
     MENU_ITEM(submenu, MSG_USER_MENU, menu_user);
   #endif    
+
+  //
+  // Switch power on/off
+  //
+  #if HAS_POWER_SWITCH
+    if (powersupply_on)
+      MENU_ITEM(gcode, MSG_SWITCH_PS_OFF, PSTR("M81"));
+    else
+      MENU_ITEM(gcode, MSG_SWITCH_PS_ON, PSTR("M80"));
+  #endif
+    
     
   MENU_ITEM(submenu, MSG_TEMPERATURE, menu_temperature);
 
@@ -193,9 +206,6 @@ void menu_main() {
   #if ENABLED(MMU2_MENUS)
     if (!busy) MENU_ITEM(submenu, MSG_MMU2_MENU, menu_mmu2);
   #endif
-
-  MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
-
 
   #if ENABLED(ADVANCED_PAUSE_FEATURE)
     #if E_STEPPERS == 1 && DISABLED(FILAMENT_LOAD_UNLOAD_GCODES)
@@ -216,17 +226,7 @@ void menu_main() {
     MENU_ITEM(submenu, MSG_LED_CONTROL, menu_led);
   #endif
 
-  //
-  // Switch power on/off
-  //
-  #if HAS_POWER_SWITCH
-    if (powersupply_on)
-      MENU_ITEM(gcode, MSG_SWITCH_PS_OFF, PSTR("M81"));
-    else
-      MENU_ITEM(gcode, MSG_SWITCH_PS_ON, PSTR("M80"));
-  #endif
-
-  #if HAS_ENCODER_WHEEL && ENABLED(SDSUPPORT)
+    #if HAS_ENCODER_WHEEL && ENABLED(SDSUPPORT)
     //
     // Autostart
     //
