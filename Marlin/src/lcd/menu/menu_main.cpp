@@ -176,7 +176,7 @@ void menu_main() {
       #endif
           MENU_ITEM(function, MSG_RESUME_PRINT, lcd_resume);
     #endif
-
+      
     MENU_ITEM(submenu, MSG_MOTION, menu_motion);
   }
 
