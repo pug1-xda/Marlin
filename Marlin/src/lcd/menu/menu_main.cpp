@@ -177,15 +177,6 @@ void menu_main() {
           MENU_ITEM(function, MSG_RESUME_PRINT, lcd_resume);
     #endif
       
-    MENU_ITEM(submenu, MSG_MOTION, menu_motion);
-  }
-
-  MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
-    
-  #if ENABLED(CUSTOM_USER_MENUS)
-    MENU_ITEM(submenu, MSG_USER_MENU, menu_user);
-  #endif    
-
   //
   // Switch power on/off
   //
@@ -194,8 +185,16 @@ void menu_main() {
       MENU_ITEM(gcode, MSG_SWITCH_PS_OFF, PSTR("M81"));
     else
       MENU_ITEM(gcode, MSG_SWITCH_PS_ON, PSTR("M80"));
-  #endif
+  #endif      
+      
+    MENU_ITEM(submenu, MSG_MOTION, menu_motion);
+  }
+
+  MENU_ITEM(submenu, MSG_CONFIGURATION, menu_configuration);
     
+  #if ENABLED(CUSTOM_USER_MENUS)
+    MENU_ITEM(submenu, MSG_USER_MENU, menu_user);
+  #endif    
     
   MENU_ITEM(submenu, MSG_TEMPERATURE, menu_temperature);
 

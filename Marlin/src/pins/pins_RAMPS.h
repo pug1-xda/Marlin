@@ -77,9 +77,9 @@
 //
 // Limit Switches
 //
-#define X_MIN_PIN           14
+#define X_MIN_PIN           -1
 #ifndef X_MAX_PIN
-  #define X_MAX_PIN         -1
+  #define X_MAX_PIN         14
 #endif
 #define Y_MIN_PIN          15
 #define Y_MAX_PIN          -1
@@ -228,7 +228,7 @@
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN        11
+  #define PS_ON_PIN        12
 #endif
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENABLE_PIN)
@@ -459,7 +459,7 @@
     #elif ENABLED(LCD_I2C_VIKI)
 
       #define BTN_EN1           22   // http://files.panucatt.com/datasheets/viki_wiring_diagram.pdf explains 40/42.
-      #define BTN_EN2            7   // 22/7 are unused on RAMPS_14. 22 is unused and 7 the SERVO0_PIN on RAMPS_13.
+      #define BTN_EN2           -1   // 22/7 are unused on RAMPS_14. 22 is unused and 7 the SERVO0_PIN on RAMPS_13.
       #define BTN_ENC           -1
 
       #define LCD_SDSS          SDSS
@@ -476,7 +476,7 @@
       #define STAT_LED_BLUE_PIN 35
 
       #define BTN_EN1           22
-      #define BTN_EN2            7
+      #define BTN_EN2           -1
       #define BTN_ENC           39
 
       #define SD_DETECT_PIN     -1   // Pin 49 for display sd interface, 72 for easy adapter board
