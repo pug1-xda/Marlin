@@ -239,6 +239,7 @@ void _goto_manual_move(const float scale) {
   move_menu_scale = scale;
   ui.goto_screen(_manual_move_func_ptr);
 }
+//void menu_move_100mm() { _goto_manual_move(100); }
 void menu_move_10mm() { _goto_manual_move(10); }
 void menu_move_1mm()  { _goto_manual_move( 1); }
 void menu_move_01mm() { _goto_manual_move( 0.1f); }
@@ -266,6 +267,7 @@ void _menu_move_distance(const AxisEnum axis, const screenFunc_t func, const int
   #endif
   {
     MENU_BACK(MSG_MOVE_AXIS);
+    //MENU_ITEM(submenu, MSG_MOVE_100MM, menu_move_100mm);
     MENU_ITEM(submenu, MSG_MOVE_10MM, menu_move_10mm);
     MENU_ITEM(submenu, MSG_MOVE_1MM, menu_move_1mm);
     MENU_ITEM(submenu, MSG_MOVE_01MM, menu_move_01mm);
@@ -423,6 +425,11 @@ void menu_motion() {
   // ^ Main
   //
   MENU_BACK(MSG_MAIN);
+    
+ //
+  // Disable Steppers
+  //
+  MENU_ITEM(gcode, MSG_DISABLE_STEPPERS, PSTR("M84"));
 
   //
   // Move Axis
@@ -479,10 +486,6 @@ void menu_motion() {
     MENU_ITEM(function, MSG_LEVEL_CORNERS, _lcd_level_bed_corners);
   #endif
 
-  //
-  // Disable Steppers
-  //
-  MENU_ITEM(gcode, MSG_DISABLE_STEPPERS, PSTR("M84"));
 
   END_MENU();
 }
