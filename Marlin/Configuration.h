@@ -1644,7 +1644,7 @@
 //  M300 S<frequency Hz> P<duration ms>
 //
 #define LCD_FEEDBACK_FREQUENCY_DURATION_MS 25
-#define LCD_FEEDBACK_FREQUENCY_HZ 2500
+#define LCD_FEEDBACK_FREQUENCY_HZ 3500
 
 //=============================================================================
 //======================== LCD / Controller Selection =========================
