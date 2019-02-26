@@ -53,6 +53,19 @@ static void lcd_factory_settings() {
   settings.reset();
   ui.completion_feedback();
 }
+#if ENABLED(MENU_ITEM_CASE_LIGHT)
+
+  #include "../../feature/caselight.h"
+
+  void menu_case_light() {
+    START_MENU();
+    MENU_BACK(MSG_MAIN);
+    MENU_ITEM_EDIT_CALLBACK(uint8, MSG_CASE_LIGHT_BRIGHTNESS, &case_light_brightness, 0, 255, update_case_light, true);
+    MENU_ITEM_EDIT_CALLBACK(bool, MSG_CASE_LIGHT, (bool*)&case_light_on, update_case_light);
+    END_MENU();
+  }
+
+#endif      
 
 #if ENABLED(LCD_PROGRESS_BAR_TEST)
 
@@ -88,7 +101,7 @@ static void lcd_factory_settings() {
     START_MENU();
 
     MENU_BACK(MSG_MAIN);
-
+      
     #if ENABLED(LCD_PROGRESS_BAR_TEST)
       MENU_ITEM(submenu, MSG_PROGRESS_BAR_TEST, _progress_bar_test);
     #endif
@@ -161,20 +174,6 @@ static void lcd_factory_settings() {
     MENU_ITEM(gcode, MSG_BLTOUCH_SELFTEST, PSTR("M280 P" STRINGIFY(Z_PROBE_SERVO_NR) " S" STRINGIFY(BLTOUCH_SELFTEST)));
     MENU_ITEM(gcode, MSG_BLTOUCH_DEPLOY, PSTR("M280 P" STRINGIFY(Z_PROBE_SERVO_NR) " S" STRINGIFY(BLTOUCH_DEPLOY)));
     MENU_ITEM(gcode, MSG_BLTOUCH_STOW, PSTR("M280 P" STRINGIFY(Z_PROBE_SERVO_NR) " S" STRINGIFY(BLTOUCH_STOW)));
-    END_MENU();
-  }
-
-#endif
-
-#if ENABLED(MENU_ITEM_CASE_LIGHT)
-
-  #include "../../feature/caselight.h"
-
-  void menu_case_light() {
-    START_MENU();
-    MENU_BACK(MSG_MAIN);
-    MENU_ITEM_EDIT_CALLBACK(uint8, MSG_CASE_LIGHT_BRIGHTNESS, &case_light_brightness, 0, 255, update_case_light, true);
-    MENU_ITEM_EDIT_CALLBACK(bool, MSG_CASE_LIGHT, (bool*)&case_light_on, update_case_light);
     END_MENU();
   }
 

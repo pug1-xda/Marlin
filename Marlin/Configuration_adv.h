@@ -2012,17 +2012,17 @@
   #define USER_DESC_1 "Home & Info"
   #define USER_GCODE_1 "G28\nM503"
 
-  #define USER_DESC_2 "Spindle On" 
-  #define USER_GCODE_2 "M355 S1 P255"
+  #define USER_DESC_2 "50mm S/P"
+  #define USER_GCODE_2 "G28\nG0 X111 Y17 Z50 F3000"
 
-  #define USER_DESC_3 "Spindle Off"
-  #define USER_GCODE_3 "M355 S0 P255"
+  #define USER_DESC_3"150mm S/P"
+  #define USER_GCODE_3 "G28\nG0 X111 Y17 Z150 F3000"
 
-  #define USER_DESC_4 "Tool Change"
-  #define USER_GCODE_4 "G28\nG0 X50 Y480 Z325 F3000"
+  #define USER_DESC_4 "250mm S/P"
+  #define USER_GCODE_4 "G28\nG0 X111 Y17 Z250 F3000"  
 
-  #define USER_DESC_5 "Home & Info"
-  #define USER_GCODE_5 "G28\nM503"
+  #define USER_DESC_5 "Tool Change"
+  #define USER_GCODE_5 "G28\nG0 X75 Y480 Z340 F3000"
 #endif
 
 /**
