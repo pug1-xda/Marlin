@@ -2019,7 +2019,7 @@
   #define USER_GCODE_3 "G28\nG0 X111 Y17 Z150 F3000"
 
   #define USER_DESC_4 "250mm S/P"
-  #define USER_GCODE_4 "G28\nG0 X111 Y17 Z250 F3000"  
+  #define USER_GCODE_4 "G28\nG0 X111 Y17 Z150 F3000"  
 
   #define USER_DESC_5 "Tool Change"
   #define USER_GCODE_5 "G28\nG0 X75 Y480 Z340 F3000"
