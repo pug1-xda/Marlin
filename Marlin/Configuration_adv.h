@@ -2013,17 +2013,17 @@
   #define USER_DESC_1 "Home & Info"
   #define USER_GCODE_1 "G28\nM503"
 
-  #define USER_DESC_2 "50mm S/P"
-  #define USER_GCODE_2 "G28\nG0 X111 Y17 Z50 F3000"
+  #define USER_DESC_2 "G92"
+  #define USER_GCODE_2 "G92 X0 Y0 Z0"
 
   #define USER_DESC_3"150mm S/P"
-  #define USER_GCODE_3 "G28\nG0 X111 Y17 Z150 F3000"
+  #define USER_GCODE_3 "G28\nG0 X0 Y20 Z150 F3000"
 
   #define USER_DESC_4 "250mm S/P"
-  #define USER_GCODE_4 "G28\nG0 X111 Y17 Z150 F3000"  
+  #define USER_GCODE_4 "G28\nG0 X0 Y17 Z150 F3000"  
 
   #define USER_DESC_5 "Tool Change"
-  #define USER_GCODE_5 "G28\nG0 X75 Y480 Z340 F3000"
+  #define USER_GCODE_5 "G28\nG0 X500 Y480 Z340 F3000"
 #endif
 
 /**
