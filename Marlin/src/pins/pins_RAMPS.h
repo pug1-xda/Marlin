@@ -233,7 +233,7 @@
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENABLE_PIN)
   #if NUM_SERVOS <= 1 // try to use servo connector first
-    #define CASE_LIGHT_PIN    44   // MUST BE HARDWARE PWM
+    #define CASE_LIGHT_PIN    6   // MUST BE HARDWARE PWM
   #elif !(BOTH(ULTRA_LCD, NEWPANEL) && ANY(PANEL_ONE, VIKI2, miniVIKI, MINIPANEL, REPRAPWORLD_KEYPAD))  // try to use AUX 2
     #define CASE_LIGHT_PIN   44   // MUST BE HARDWARE PWM
   #endif
