@@ -186,8 +186,8 @@ millis_t next_button_update_ms;
     bool MarlinUI::external_control; // = false
 
     void MarlinUI::wait_for_release() {
-      while (button_pressed()) safe_delay(50);
-      safe_delay(50);
+      while (button_pressed()) safe_delay(75);
+      safe_delay(75);
     }
 
   #endif
@@ -207,7 +207,7 @@ void MarlinUI::init() {
       SET_INPUT_PULLUP(BTN_EN2);
     #endif
     #if BUTTON_EXISTS(ENC)
-      SET_INPUT_PULLUP(BTN_ENC);
+      SET_INPUT(BTN_ENC);
     #endif
 
     #if BUTTON_EXISTS(UP)

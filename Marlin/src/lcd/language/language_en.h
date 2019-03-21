@@ -525,6 +525,9 @@
 #ifndef MSG_MOVE_10MM
   #define MSG_MOVE_10MM                       _UxGT("Move 10mm")
 #endif
+#ifndef MSG_MOVE_100MM
+  #define MSG_MOVE_100MM                       _UxGT("Move 100mm")
+#endif
 #ifndef MSG_SPEED
   #define MSG_SPEED                           _UxGT("Speed")
 #endif
