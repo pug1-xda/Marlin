@@ -141,7 +141,7 @@
 
   #define BUTTON_PRESSED(BN) READ(BTN_## BN)
 
-  #if !BUTTON_EXISTS(ENC)
+  #if BUTTON_EXISTS(ENC)
     #define BLEN_C 2
     #define EN_C _BV(BLEN_C)
   #endif
@@ -157,7 +157,7 @@
     #define B_DW (BUTTON_DOWN   << B_I2C_BTN_OFFSET)
     #define B_RI (BUTTON_RIGHT  << B_I2C_BTN_OFFSET)
 
-    #if !BUTTON_EXISTS(ENC)                                // The pause/stop/restart button is connected to BTN_ENC when used
+    #if BUTTON_EXISTS(ENC)                                // The pause/stop/restart button is connected to BTN_ENC when used
       #define B_ST (EN_C)                                 // Map the pause/stop/resume button into its normalized functional name
       #define BUTTON_CLICK() (buttons & (B_MI|B_RI|B_ST)) // Pause/stop also acts as click until a proper pause/stop is implemented.
     #else
