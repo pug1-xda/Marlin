@@ -1018,8 +1018,8 @@ void MarlinUI::update() {
           #if BUTTON_EXISTS(EN2)
             if (BUTTON_PRESSED(EN2)) newbutton |= EN_B;
           #endif
-          #if !BUTTON_EXISTS(ENC)
-            if (BUTTON_PRESSED(ENC)) newbutton |= EN_C;
+          #if BUTTON_EXISTS(ENC)
+            if (!BUTTON_PRESSED(ENC)) newbutton |= EN_C;
           #endif
           #if BUTTON_EXISTS(BACK)
             if (BUTTON_PRESSED(BACK)) newbutton |= EN_D;
