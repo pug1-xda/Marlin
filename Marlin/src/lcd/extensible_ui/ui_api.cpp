@@ -82,14 +82,15 @@
 #include "ui_api.h"
 
 #if ENABLED(BACKLASH_GCODE)
-  extern float backlash_distance_mm[XYZ], backlash_correction;
+  extern float backlash_distance_mm[XYZ];
+  extern uint8_t backlash_correction;
   #ifdef BACKLASH_SMOOTHING_MM
     extern float backlash_smoothing_mm;
   #endif
 #endif
 
 #if HAS_LEVELING
-  #include "../../feature/bedlevel.h"
+  #include "../../feature/bedlevel/bedlevel.h"
 #endif
 
 #if HAS_FILAMENT_SENSOR
@@ -401,6 +402,7 @@ namespace ExtUI {
         #if AXIS_IS_TMC(Z)
           case Z: stepperZ.rms_current(clamp(mA, 500, 1500)); break;
         #endif
+        default: break;
       };
     }
 
@@ -424,6 +426,7 @@ namespace ExtUI {
         #if AXIS_IS_TMC(E5)
           case E5: stepperE5.rms_current(clamp(mA, 500, 1500)); break;
         #endif
+        default: break;
       };
     }
 
@@ -438,6 +441,7 @@ namespace ExtUI {
         #if Z_SENSORLESS && AXIS_HAS_STALLGUARD(Z)
           case Z: return stepperZ.sgt();
         #endif
+        default: return 0;
       }
     }
 
@@ -452,6 +456,7 @@ namespace ExtUI {
         #if Z_SENSORLESS && AXIS_HAS_STALLGUARD(Z)
           case Z: stepperZ.sgt(clamp(value, -64, 63)); break;
         #endif
+        default: break;
       }
     }
   #endif
@@ -682,8 +687,8 @@ namespace ExtUI {
     void setAxisBacklash_mm(const float value, const axis_t axis)
                                                       { backlash_distance_mm[axis] = clamp(value,0,5); }
 
-    float getBacklashCorrection_percent()             { return backlash_correction * 100; }
-    void setBacklashCorrection_percent(const float value) { backlash_correction = clamp(value, 0, 100) / 100.0f; }
+    float getBacklashCorrection_percent()             { return ui8_to_percent(backlash_correction); }
+    void setBacklashCorrection_percent(const float value) { backlash_correction = map(clamp(value, 0, 100), 0, 100, 0, 255); }
 
     #ifdef BACKLASH_SMOOTHING_MM
       float getBacklashSmoothing_mm()                 { return backlash_smoothing_mm; }
