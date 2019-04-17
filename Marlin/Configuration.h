@@ -926,7 +926,8 @@
 //#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
-#define PAUSE_BEFORE_DEPLOY_STOW
+if ENABLED(PAUSE_BEFORE_DEPLOY_STOW)
+  #define PAUSE_PROBE_DEPLOY_WHEN_TRIGGERED // For Manual Deploy Allenkey Probe
 
 /**
  * Enable one or more of the following if probing seems unreliable.
