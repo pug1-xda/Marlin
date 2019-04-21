@@ -19,37 +19,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+#pragma once
 
 /**
- * Gen7 v1.3 pin assignments
+ * HAL/HAL_ST7920.h
+ * For the HALs that provide direct access to the ST7920 display
+ * (bypassing U8G), it will allow the LIGHTWEIGHT_UI to operate.
  */
 
-/**
- * Rev B    26 DEC 2016
- *
- * added pointer to a current Arduino IDE extension
- *
- */
-
-/**
- * A useable Arduino IDE extension (board manager) can be found at
- * https://github.com/Lauszus/Sanguino
- *
- * This extension has been tested on Arduino 1.6.12 & 1.8.0
- *
- * Here's the JSON path:
- * https://raw.githubusercontent.com/Lauszus/Sanguino/master/package_lauszus_sanguino_index.json
- *
- * When installing select 1.0.2
- *
- * Installation instructions can be found at https://learn.sparkfun.com/pages/CustomBoardsArduino
- * Just use the above JSON URL instead of Sparkfun's JSON.
- *
- * Once installed select the Sanguino board and then select the CPU.
- *
- */
-
-#define BOARD_NAME "Gen7 v1.3"
-
-#define GEN7_VERSION 13   // v1.3
-#include "pins_GEN7_12.h"
+#if HAS_GRAPHICAL_LCD && ENABLED(LIGHTWEIGHT_UI)
+  void ST7920_cs();
+  void ST7920_ncs();
+  void ST7920_set_cmd();
+  void ST7920_set_dat();
+  void ST7920_write_byte(const uint8_t data);
+#endif
