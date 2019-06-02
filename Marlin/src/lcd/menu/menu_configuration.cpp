@@ -197,7 +197,7 @@ MENU_BACK(MSG_CONFIGURATION);
       );
       char mess[21];
       strcpy_P(mess, PSTR("BLTouch Mode - "));
-      sprintf_P(&mess[15], bltouch.last_written_mode ? PSTR("5V") : PSTR("OD"));
+      strcpy_P(&mess[15], bltouch.last_written_mode ? PSTR("5V") : PSTR("OD"));
       ui.set_status(mess);
       ui.return_to_status();
     }
