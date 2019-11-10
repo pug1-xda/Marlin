@@ -113,7 +113,7 @@
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN  32
+  #define Z_MIN_PROBE_PIN  59
 #endif
 
 //
@@ -495,6 +495,8 @@
     #if ENABLED(REPRAP_DISCOUNT_SMART_CONTROLLER)
 
       #define BEEPER_PIN        37
+      #define STAT_LED_RED_PIN  57
+      #define STAT_LED_BLUE_PIN 58
 
       #if ENABLED(CR10_STOCKDISPLAY)
         #define BTN_EN1         17
@@ -520,6 +522,8 @@
       #define BTN_EN2           59
       #define BTN_ENC           63
       #define SD_DETECT_PIN     42
+      #define STAT_LED_RED_PIN  57
+      #define STAT_LED_BLUE_PIN 58
 
     #elif ENABLED(LCD_I2C_PANELOLU2)
 
