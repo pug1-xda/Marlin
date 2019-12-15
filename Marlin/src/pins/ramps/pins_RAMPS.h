@@ -66,19 +66,19 @@
 //
 #ifndef SERVO0_PIN
   #ifdef IS_RAMPS_13
-    #define SERVO0_PIN      7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
+    #define SERVO0_PIN      7
   #else
     #define SERVO0_PIN     11
   #endif
 #endif
 #ifndef SERVO1_PIN
-  #define SERVO1_PIN        6
+  #define SERVO1_PIN        -1  //6
 #endif
 #ifndef SERVO2_PIN
-  #define SERVO2_PIN        5
+  #define SERVO2_PIN        -1  //5
 #endif
 #ifndef SERVO3_PIN
-  #define SERVO3_PIN        4
+  #define SERVO3_PIN        -1  //4
 #endif
 
 //
@@ -105,7 +105,7 @@
     #define Z_MIN_PIN      18
   #endif
   #ifndef Z_MAX_PIN
-    #define Z_MAX_PIN      19
+    #define Z_MAX_PIN      -1  //19
   #endif
 #endif
 
@@ -113,7 +113,7 @@
 // Z Probe (when not Z_MIN_PIN)
 //
 #ifndef Z_MIN_PROBE_PIN
-  #define Z_MIN_PROBE_PIN  59
+  #define Z_MIN_PROBE_PIN  19
 #endif
 
 //
@@ -255,14 +255,14 @@
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN        12
+  #define PS_ON_PIN        40
 #endif
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENA_PIN)
   #if NUM_SERVOS <= 1 // Prefer the servo connector
-    #define CASE_LIGHT_PIN  6   // Hardware PWM
+    #define CASE_LIGHT_PIN  5   // Hardware PWM
   #elif HAS_FREE_AUX2_PINS
-    #define CASE_LIGHT_PIN 44   // Hardware PWM
+    #define CASE_LIGHT_PIN 5   // Hardware PWM
   #endif
 #endif
 
@@ -495,8 +495,9 @@
     #if ENABLED(REPRAP_DISCOUNT_SMART_CONTROLLER)
 
       #define BEEPER_PIN        37
-      #define STAT_LED_RED_PIN  57
-      #define STAT_LED_BLUE_PIN 58
+      #define STAT_LED_RED_PIN  65
+      #define STAT_LED_BLUE_PIN 66
+
 
       #if ENABLED(CR10_STOCKDISPLAY)
         #define BTN_EN1         17
@@ -522,8 +523,6 @@
       #define BTN_EN2           59
       #define BTN_ENC           63
       #define SD_DETECT_PIN     42
-      #define STAT_LED_RED_PIN  57
-      #define STAT_LED_BLUE_PIN 58
 
     #elif ENABLED(LCD_I2C_PANELOLU2)
 
@@ -535,8 +534,8 @@
 
     #elif ENABLED(LCD_I2C_VIKI)
 
-      #define BTN_EN1           22   // http://files.panucatt.com/datasheets/viki_wiring_diagram.pdf explains 40/42.
-      #define BTN_EN2            7   // 22/7 are unused on RAMPS_14. 22 is unused and 7 the SERVO0_PIN on RAMPS_13.
+      #define BTN_EN1           40   // http://files.panucatt.com/datasheets/viki_wiring_diagram.pdf explains 40/42.
+      #define BTN_EN2           42
       #define BTN_ENC           -1
 
       #define LCD_SDSS          SDSS
@@ -580,7 +579,10 @@
       #define BEEPER_PIN        37
       #define BTN_ENC           35
       #define SD_DETECT_PIN     49
-      #define KILL_PIN          41
+
+      #ifndef KILL_PIN
+        #define KILL_PIN        41
+      #endif
 
       #if ENABLED(MKS_MINI_12864)   // Added in Marlin 1.1.6
 
