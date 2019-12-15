@@ -959,11 +959,7 @@
 //#define LCD_SET_PROGRESS_MANUALLY
 
 // Show the E position (filament used) during printing
-<<<<<<< HEAD
 #define LCD_SHOW_E_TOTAL
-=======
-//#define LCD_SHOW_E_TOTAL
->>>>>>> upstream/bugfix-2.0.x
 
 #if HAS_GRAPHICAL_LCD && HAS_PRINT_PROGRESS
   //#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits

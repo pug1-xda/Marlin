@@ -327,17 +327,10 @@
 #if ENABLED(PSU_CONTROL)
   #define PSU_ACTIVE_HIGH false     // Set 'false' for ATX, 'true' for X-Box
 
-<<<<<<< HEAD
   #define PSU_DEFAULT_OFF         // Keep power off until enabled directly with M80
-  #define PSU_POWERUP_DELAY 250   // (ms) Delay for the PSU to warm up to full power
+  #define PSU_POWERUP_DELAY 100   // (ms) Delay for the PSU to warm up to full power
 
   #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
-=======
-  //#define PSU_DEFAULT_OFF         // Keep power off until enabled directly with M80
-  //#define PSU_POWERUP_DELAY 100   // (ms) Delay for the PSU to warm up to full power
-
-  //#define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
->>>>>>> upstream/bugfix-2.0.x
   #if ENABLED(AUTO_POWER_CONTROL)
     #define AUTO_POWER_FANS         // Turn on PSU if fans need power
     #define AUTO_POWER_E_FANS
