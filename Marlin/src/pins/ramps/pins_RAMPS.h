@@ -208,6 +208,7 @@
 #endif
 
 #define HEATER_0_PIN       RAMPS_D10_PIN
+#define FAN1_PIN       6
 
 #if ENABLED(IS_RAMPS_EFB)                      // Hotend, Fan, Bed
   #define HEATER_BED_PIN   RAMPS_D8_PIN
@@ -221,7 +222,7 @@
 #elif DISABLED(IS_RAMPS_SF)                    // Not Spindle, Fan (i.e., "EFBF" or "EFBE")
   #define HEATER_BED_PIN   RAMPS_D8_PIN
   #if HOTENDS == 1
-    #define FAN1_PIN       MOSFET_D_PIN
+    #define FAN1_PIN       6
   #else
     #define HEATER_1_PIN   MOSFET_D_PIN
   #endif
@@ -233,7 +234,7 @@
   #elif EITHER(IS_RAMPS_EEF, IS_RAMPS_SF)         // Hotend, Hotend, Fan or Spindle, Fan
     #define FAN_PIN        RAMPS_D8_PIN
   #elif ENABLED(IS_RAMPS_EEB)                  // Hotend, Hotend, Bed
-    #define FAN_PIN         4                  // IO pin. Buffer needed
+    #define FAN_PIN         6                  // IO pin. Buffer needed
   #else                                        // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
     #define FAN_PIN        RAMPS_D9_PIN
   #endif
