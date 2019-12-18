@@ -256,7 +256,7 @@
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN        40
+  #define PS_ON_PIN        65
 #endif
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENA_PIN)
