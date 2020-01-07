@@ -330,9 +330,9 @@
 #define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
 
-  #define CONTROLLER_FAN_PIN 57           // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN 4           // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 90             // Duration in seconds for the fan to run after all motors are disabled
-  #define CONTROLLERFAN_SPEED 255           // 255 == full speed
+  #define CONTROLLERFAN_SPEED 190           // 255 == full speed
   //#define CONTROLLERFAN_SPEED_Z_ONLY 127  // Reduce noise on machines that keep Z enabled
 #endif
 
@@ -359,7 +359,7 @@
  *
  * Define one or both of these to override the default 0-255 range.
  */
-#define FAN_MIN_PWM 215
+#define FAN_MIN_PWM 50
 #define FAN_MAX_PWM 255
 
 /**
@@ -1667,9 +1667,9 @@
  * Note that M207 / M208 / M209 settings are saved to EEPROM.
  *
  */
-//#define FWRETRACT
+#define FWRETRACT
 #if ENABLED(FWRETRACT)
-  #define FWRETRACT_AUTORETRACT           // Override slicer retractions
+  //#define FWRETRACT_AUTORETRACT           // Override slicer retractions
   #if ENABLED(FWRETRACT_AUTORETRACT)
     #define MIN_AUTORETRACT 0.1           // (mm) Don't convert E moves under this length
     #define MAX_AUTORETRACT 10.0          // (mm) Don't convert E moves over this length
