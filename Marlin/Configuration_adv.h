@@ -307,9 +307,9 @@
 #define EXTRUDER_RUNOUT_PREVENT
 #if ENABLED(EXTRUDER_RUNOUT_PREVENT)
   #define EXTRUDER_RUNOUT_MINTEMP 180
-  #define EXTRUDER_RUNOUT_SECONDS 30
-  #define EXTRUDER_RUNOUT_SPEED 150  // (mm/m)
-  #define EXTRUDER_RUNOUT_EXTRUDE 5   // (mm)
+  #define EXTRUDER_RUNOUT_SECONDS 15
+  #define EXTRUDER_RUNOUT_SPEED 300  // (mm/m)
+  #define EXTRUDER_RUNOUT_EXTRUDE 2   // (mm)
 #endif
 
 // @section temperature
@@ -333,7 +333,7 @@
 
   #define CONTROLLER_FAN_PIN 4           // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 90             // Duration in seconds for the fan to run after all motors are disabled
-  #define CONTROLLERFAN_SPEED 190           // 255 == full speed
+  #define CONTROLLERFAN_SPEED 120           // 255 == full speed
   //#define CONTROLLERFAN_SPEED_Z_ONLY 127  // Reduce noise on machines that keep Z enabled
 #endif
 
