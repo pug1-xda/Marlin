@@ -53,10 +53,6 @@ GcodeSuite gcode;
   #include "../feature/cancel_object.h"
 #endif
 
-#if ENABLED(LASER_MOVE_POWER)
-  #include "../feature/spindle_laser.h"
-#endif
-
 #include "../MarlinCore.h" // for idle()
 
 millis_t GcodeSuite::previous_move_ms;
@@ -175,18 +171,6 @@ void GcodeSuite::get_destination_from_command() {
   // Get ABCDHI mixing factors
   #if BOTH(MIXING_EXTRUDER, DIRECT_MIXING_IN_G1)
     M165();
-  #endif
-
-  #if ENABLED(LASER_MOVE_POWER)
-    // Set the laser power in the planner to configure this move
-    if (parser.seen('S'))
-      cutter.inline_power(parser.value_int());
-    else {
-      #if ENABLED(LASER_MOVE_G0_OFF)
-        if (parser.codenum == 0)        // G0
-          cutter.inline_enabled(false);
-      #endif
-    }
   #endif
 }
 
@@ -768,10 +752,6 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
         case 702: M702(); break;                                  // M702: Unload Filament
       #endif
 
-      #if ENABLED(CONTROLLER_FAN_EDITABLE)
-        case 710: M710(); break;                                  // M710: Set Controller Fan settings
-      #endif
-
       #if ENABLED(GCODE_MACROS)
         case 810: case 811: case 812: case 813: case 814:
         case 815: case 816: case 817: case 818: case 819:
@@ -873,11 +853,7 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
 
       #if ENABLED(POWER_LOSS_RECOVERY)
         case 413: M413(); break;                                  // M413: Enable/disable/query Power-Loss Recovery
-        case 1000: M1000(); break;                                // M1000: [INTERNAL] Resume from power-loss
-      #endif
-
-      #if ENABLED(SDSUPPORT)
-        case 1001: M1001(); break;                                // M1001: [INTERNAL] Handle SD completion
+        case 1000: M1000(); break;                                // M1000: Resume from power-loss
       #endif
 
       #if ENABLED(MAX7219_GCODE)
