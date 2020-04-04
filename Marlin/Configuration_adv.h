@@ -180,7 +180,6 @@
   #define THERMAL_PROTECTION_BED_PERIOD        60 // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS    10 // Degrees Celsius
 
-
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
