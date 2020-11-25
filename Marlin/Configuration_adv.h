@@ -1665,12 +1665,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  #define PROBE_PT_1_X 50
-  #define PROBE_PT_1_Y 50
-  #define PROBE_PT_2_X 100
-  #define PROBE_PT_2_Y 100
-  #define PROBE_PT_3_X 150
-  #define PROBE_PT_3_Y 150
+  //#define PROBE_PT_1_X 15
+  //#define PROBE_PT_1_Y 180
+  //#define PROBE_PT_2_X 15
+  //#define PROBE_PT_2_Y 20
+  //#define PROBE_PT_3_X 170
+  //#define PROBE_PT_3_Y 20
 #endif
 
 /**
@@ -3560,12 +3560,12 @@
 #if ENABLED(PRINTCOUNTER)
   #define SERVICE_WARNING_BUZZES  3
   // Activate up to 3 service interval watchdogs
-  //#define SERVICE_NAME_1      "Service S"
-  //#define SERVICE_INTERVAL_1  100 // print hours
+  #define SERVICE_NAME_1      "Service S"
+  #define SERVICE_INTERVAL_1  100 // print hours
   #define SERVICE_NAME_2      "Service L"
   #define SERVICE_INTERVAL_2  200 // print hours
-  //#define SERVICE_NAME_3      "Service 3"
-  //#define SERVICE_INTERVAL_3   50 // print hours
+  #define SERVICE_NAME_3      "Service 3"
+  #define SERVICE_INTERVAL_3   50 // print hours
 #endif
 
 // @section develop
