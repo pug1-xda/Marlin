@@ -99,13 +99,13 @@
 // Filament Runout Sensor
 //
 #define FIL_RUNOUT_PIN                     P1_26  // E0DET
-#define FIL_RUNOUT2_PIN                    P1_25  // E1DET
+//#define FIL_RUNOUT2_PIN                    P1_25  // E1DET
 
 //
 // Power Supply Control
 //
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN                        P1_00  // PWRDET
+  #define PS_ON_PIN                        P1_25  // PWRDET
 #endif
 
 //
