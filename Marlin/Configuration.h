@@ -332,7 +332,7 @@
   #define PSU_ACTIVE_STATE LOW      // Set 'LOW' for ATX, 'HIGH' for X-Box
 
   #define PSU_DEFAULT_OFF         // Keep power off until enabled directly with M80
-  #define PSU_POWERUP_DELAY 250   // (ms) Delay for the PSU to warm up to full power
+  #define PSU_POWERUP_DELAY 100   // (ms) Delay for the PSU to warm up to full power
 
   #define AUTO_POWER_CONTROL      // Enable automatic control of the PS_ON pin
   #if ENABLED(AUTO_POWER_CONTROL)
@@ -754,11 +754,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 30, 2000 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 30, 5000 }
 
-//#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
+#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 300, 300, 100, 2000 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 1000, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -767,11 +767,11 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 100, 100, 25, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 200, 200, 25, 6000 }
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 1000, 1000, 1000, 10000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 1000,20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -783,8 +783,8 @@
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1500    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_RETRACT_ACCELERATION  4000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -818,7 +818,7 @@
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.017 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.011 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -992,7 +992,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -0.9 }
+#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -1.0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
