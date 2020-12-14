@@ -499,16 +499,22 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  19.45
-    #define DEFAULT_Ki   1.70
-    #define DEFAULT_Kd  55.65
+    #define DEFAULT_Kp 13.20
+     #define DEFAULT_Ki 0.42
+     #define DEFAULT_Kd 103.09
   #endif
 #endif // PIDTEMP
 
-/*PID Auto_tune 50%_fan, 230c_temp
-17:45:59.162 : #define DEFAULT_Kp 19.45
-17:45:59.162 : #define DEFAULT_Ki 1.70
-17:45:59.164 : #define DEFAULT_Kd 55.65
+/*
+PID Auto_tune 50%_fan, 230c_temp
+ #define DEFAULT_Kp 19.45
+ #define DEFAULT_Ki 1.70
+ #define DEFAULT_Kd 55.65
+PID Auto_tune 100%_fan, 250c_temp
+ #define DEFAULT_Kp 13.20
+ #define DEFAULT_Ki 0.42
+ #define DEFAULT_Kd 103.09
+
 */
 
 //===========================================================================
@@ -528,7 +534,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -546,9 +552,16 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 181.60 
+  #define DEFAULT_bedKi 27.06
+  #define DEFAULT_bedKd 812.55
+
+/*
+PID Auto_tune 0%_fan, 90c_temp
+ #define DEFAULT_bedKp 181.60
+ #define DEFAULT_bedKi 27.06
+ #define DEFAULT_bedKd 812.55
+*/
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -747,7 +760,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 191.8 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 192.4 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -900,7 +913,7 @@
  * Z Servo Probe, such as an endstop switch on a rotating arm.
  */
 #define Z_PROBE_SERVO_NR 0       // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES { 50, 0 } // Z Servo Deploy and Stow angles
+#define Z_SERVO_ANGLES { 55, 5 } // Z Servo Deploy and Stow angles
 
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
@@ -992,11 +1005,11 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -1.0 }
+#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -0.75 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 25
+#define PROBING_MARGIN 45
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_SPEED (133*60)
@@ -1177,7 +1190,7 @@
  */
 #define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-  #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
+  #define FIL_RUNOUT_ENABLED_DEFAULT false // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
   //#define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
@@ -1359,9 +1372,9 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET_LFRB { 25, 25, 25, 25 } // (mm) Left, Front, Right, Back insets
+  #define LEVEL_CORNERS_INSET_LFRB { 45, 45, 45, 45 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
-  #define LEVEL_CORNERS_Z_HOP       3.0   // (mm) Z height of nozzle between leveling points
+  #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
   #define LEVEL_CENTER_TOO              // Move to the center after the last corner
 #endif
 
@@ -1394,8 +1407,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 70  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 20  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 100  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 50  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
