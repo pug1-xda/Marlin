@@ -584,7 +584,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 190
+#define EXTRUDE_MINTEMP 160
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -760,7 +760,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 187.9 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 189.7 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -771,7 +771,7 @@ PID Auto_tune 0%_fan, 90c_temp
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 1000, 20000 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 100, 2000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -780,11 +780,11 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 200, 200, 25, 6000 }
+#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 1000,20000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 100,2000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -795,9 +795,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  4000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   2000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -831,7 +831,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.011 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.014 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1522,14 +1522,14 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
-#define PREHEAT_1_TEMP_BED    102
+#define PREHEAT_1_TEMP_HOTEND 175
+#define PREHEAT_1_TEMP_BED    65
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 241
-#define PREHEAT_2_TEMP_BED    130
-#define PREHEAT_2_FAN_SPEED   127 // Value from 0 to 255
+#define PREHEAT_2_TEMP_HOTEND 235
+#define PREHEAT_2_TEMP_BED    105
+#define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -1546,7 +1546,7 @@ PID Auto_tune 0%_fan, 90c_temp
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { 0, 180, 20 }
+  #define NOZZLE_PARK_POINT { 180, 20, 35 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
@@ -1603,8 +1603,8 @@ PID Auto_tune 0%_fan, 90c_temp
 
   // Specify positions for each tool as { { X, Y, Z }, { X, Y, Z } }
   // Dual hotend system may use { {  -20, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) },  {  420, (Y_BED_SIZE / 2), (Z_MIN_POS + 1) }}
-  #define NOZZLE_CLEAN_START_POINT { { -26, 60, (Z_MIN_POS + 1) } }
-  #define NOZZLE_CLEAN_END_POINT   { {  -6, 80, (Z_MIN_POS + 1) } }
+  #define NOZZLE_CLEAN_START_POINT { { 206, 60, (Z_MIN_POS + 1) } }
+  #define NOZZLE_CLEAN_END_POINT   { { 226, 80, (Z_MIN_POS + 1) } }
 
   // Circular pattern radius
   #define NOZZLE_CLEAN_CIRCLE_RADIUS 6.5
