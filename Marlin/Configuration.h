@@ -767,7 +767,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 30, 5000 }
+#define DEFAULT_MAX_FEEDRATE          { 275, 275, 30, 4000 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -780,7 +780,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 750, 750, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -795,9 +795,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          750    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1500    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1005,7 +1005,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -0.75 }
+#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -0.70 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1049,13 +1049,13 @@ PID Auto_tune 0%_fan, 90c_temp
 #define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-#define Z_AFTER_PROBING           15 // Z position after probing is done
+#define Z_AFTER_PROBING            15 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
 // For M851 give a range for adjusting the Z probe offset
 #define Z_PROBE_OFFSET_RANGE_MIN -40
-#define Z_PROBE_OFFSET_RANGE_MAX 40
+#define Z_PROBE_OFFSET_RANGE_MAX  40
 
 // Enable the M48 repeatability test to test probe accuracy
 #define Z_MIN_PROBE_REPEATABILITY_TEST
@@ -1127,7 +1127,7 @@ PID Auto_tune 0%_fan, 90c_temp
 
 //#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
-#define Z_HOMING_HEIGHT  5      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_HOMING_HEIGHT  25      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
 #define Z_AFTER_HOMING  5      // (mm) Height to move to after homing Z
@@ -1522,8 +1522,8 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 175
-#define PREHEAT_1_TEMP_BED    65
+#define PREHEAT_1_TEMP_HOTEND 190
+#define PREHEAT_1_TEMP_BED    75
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -1546,12 +1546,12 @@ PID Auto_tune 0%_fan, 90c_temp
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { 180, 20, 35 }
+  #define NOZZLE_PARK_POINT { 30, 200, 35 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
-  #define NOZZLE_PARK_XY_FEEDRATE 300   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-  #define NOZZLE_PARK_Z_FEEDRATE   15   // (mm/s) Z axis feedrate (not used for delta printers)
+  #define NOZZLE_PARK_XY_FEEDRATE 500   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
+  #define NOZZLE_PARK_Z_FEEDRATE   50   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
 /**
