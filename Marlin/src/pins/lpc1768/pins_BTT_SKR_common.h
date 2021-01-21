@@ -71,11 +71,11 @@
 // Heaters / Fans
 //
 #ifndef HEATER_0_PIN
-  #define HEATER_0_PIN                     P2_07
+  #define HEATER_0_PIN                     P2_04
 #endif
 #if HOTENDS == 1
   #ifndef FAN1_PIN
-    #define FAN1_PIN                       P2_04
+    #define FAN1_PIN                       P2_07
   #endif
 #else
   #ifndef HEATER_1_PIN
