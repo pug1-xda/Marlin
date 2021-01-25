@@ -499,18 +499,30 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
- #define DEFAULT_Kp 21.6255
- #define DEFAULT_Ki 1.4185
- #define DEFAULT_Kd 82.4228
+#define DEFAULT_Kp 23.0701
+#define DEFAULT_Ki 2.3433
+#define DEFAULT_Kd 56.7814
+
   #endif
 #endif // PIDTEMP
 
 /*
 
 PID Auto_tune 85%_fan, 200c_temp
-18:07:04.953 : #define DEFAULT_Kp 21.6255
-18:07:04.953 : #define DEFAULT_Ki 1.4185
-18:07:04.954 : #define DEFAULT_Kd 82.4228
+#define DEFAULT_Kp 21.6255
+#define DEFAULT_Ki 1.4185
+#define DEFAULT_Kd 82.4228
+
+#define DEFAULT_Kp 22.1790
+#define DEFAULT_Ki 2.0430
+#define DEFAULT_Kd 60.1937
+
+PID Auto_tune 100%_fan, 200c_temp
+#define DEFAULT_Kp 23.0701
+#define DEFAULT_Ki 2.3433
+#define DEFAULT_Kd 56.7814
+
+
 
 
 */
@@ -765,7 +777,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 220, 220, 30, 4000 }
+#define DEFAULT_MAX_FEEDRATE          { 180, 180, 30, 4000 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -778,7 +790,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 700, 700, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 600, 600, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -793,7 +805,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          600    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
 
@@ -829,7 +841,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.014 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.020 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1146,7 +1158,7 @@ PID Auto_tune 0%_fan, 90c_temp
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS 210
+#define X_MAX_POS 200
 #define Y_MAX_POS 200
 #define Z_MAX_POS 250
 
@@ -1389,8 +1401,8 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-#define MANUAL_X_HOME_POS -42
-#define MANUAL_Y_HOME_POS -6
+#define MANUAL_X_HOME_POS -39
+#define MANUAL_Y_HOME_POS -19
 //#define MANUAL_Z_HOME_POS 0
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
@@ -1544,11 +1556,11 @@ PID Auto_tune 0%_fan, 90c_temp
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { 30, 200, 35 }
+  #define NOZZLE_PARK_POINT { 15, 180, 35 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
-  #define NOZZLE_PARK_XY_FEEDRATE 500   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
+  #define NOZZLE_PARK_XY_FEEDRATE 450   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
   #define NOZZLE_PARK_Z_FEEDRATE   50   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
