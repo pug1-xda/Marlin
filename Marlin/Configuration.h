@@ -790,7 +790,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 600, 600, 25, 600 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 600, 500, 50, 600 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -805,9 +805,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          600    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          500     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  600     // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -831,7 +831,7 @@ PID Auto_tune 0%_fan, 90c_temp
   #endif
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    11.0  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -923,7 +923,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Z Servo Probe, such as an endstop switch on a rotating arm.
  */
 #define Z_PROBE_SERVO_NR 0       // Defaults to SERVO 0 connector.
-#define Z_SERVO_ANGLES { 55, 5 } // Z Servo Deploy and Stow angles
+#define Z_SERVO_ANGLES { 50, 1 } // Z Servo Deploy and Stow angles
 
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
@@ -1015,7 +1015,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 32, 4, -0.70 }
+#define NOZZLE_TO_PROBE_OFFSET { 33, 2, -1.450 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1417,13 +1417,13 @@ PID Auto_tune 0%_fan, 90c_temp
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 110  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 110  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 70  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 102  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_XY (55*60)
-#define HOMING_FEEDRATE_Z  (5*60)
+#define HOMING_FEEDRATE_XY (70*60)
+#define HOMING_FEEDRATE_Z  (10*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1556,12 +1556,12 @@ PID Auto_tune 0%_fan, 90c_temp
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { 15, 180, 35 }
+  #define NOZZLE_PARK_POINT { 180, 180, 20 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
-  #define NOZZLE_PARK_XY_FEEDRATE 450   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-  #define NOZZLE_PARK_Z_FEEDRATE   50   // (mm/s) Z axis feedrate (not used for delta printers)
+  #define NOZZLE_PARK_XY_FEEDRATE 400   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
+  #define NOZZLE_PARK_Z_FEEDRATE   40   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
 /**
