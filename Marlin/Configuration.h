@@ -1417,7 +1417,7 @@ PID Auto_tune 0%_fan, 90c_temp
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 70  // X point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 98  // X point for Z homing
   #define Z_SAFE_HOMING_Y_POINT 102  // Y point for Z homing
 #endif
 
