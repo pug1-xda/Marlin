@@ -25,7 +25,7 @@
  * Release version. Leave the Marlin version or apply a custom scheme.
  */
 #ifndef SHORT_BUILD_VERSION
-  #define SHORT_BUILD_VERSION "pug1_2.0.7.2"
+  #define SHORT_BUILD_VERSION "pug1_2.0.7.2_b"
 #endif
 
 /**
@@ -42,7 +42,7 @@
  * version was tagged.
  */
 #ifndef STRING_DISTRIBUTION_DATE
-  #define STRING_DISTRIBUTION_DATE "26_01_2021" //original format... "2020-10-15"
+  #define STRING_DISTRIBUTION_DATE "03_02_2021" //original format... "2020-10-15"
 #endif
 
 /**
