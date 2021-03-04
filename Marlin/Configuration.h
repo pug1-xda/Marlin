@@ -777,11 +777,11 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 180, 180, 40, 4000 }
+#define DEFAULT_MAX_FEEDRATE          { 110, 110, 10, 200 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 1000, 2000 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 100, 2000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -790,11 +790,11 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 300, 400, 40, 500 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 100, 100, 10, 200 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 1000, 1000, 100,2000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 1000, 1000, 100, 2000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -805,9 +805,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          400     // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  600     // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   400    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          100     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  200     // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   200    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -841,7 +841,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.016 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.014 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1015,7 +1015,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 33, 2, -1.450 }
+#define NOZZLE_TO_PROBE_OFFSET { 33, 2, -1.3750 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1137,7 +1137,7 @@ PID Auto_tune 0%_fan, 90c_temp
 
 //#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
-#define Z_HOMING_HEIGHT  20        // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
+#define Z_HOMING_HEIGHT  30        // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
 #define Z_AFTER_HOMING  10        // (mm) Height to move to after homing Z
@@ -1158,7 +1158,7 @@ PID Auto_tune 0%_fan, 90c_temp
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
-#define X_MAX_POS 200
+#define X_MAX_POS 210
 #define Y_MAX_POS 200
 #define Z_MAX_POS 250
 
@@ -1501,7 +1501,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
 #define EEPROM_SETTINGS     // Persistent storage with M500 and M501
-//#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
+#define DISABLE_M503        // Saves ~2700 bytes of PROGMEM. Disable for release!
 //#define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
@@ -1532,13 +1532,13 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 205
-#define PREHEAT_1_TEMP_BED    75
+#define PREHEAT_1_TEMP_HOTEND 201
+#define PREHEAT_1_TEMP_BED    65
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 235
-#define PREHEAT_2_TEMP_BED    105
+#define PREHEAT_2_TEMP_BED    93
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
 /**
@@ -1560,8 +1560,8 @@ PID Auto_tune 0%_fan, 90c_temp
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   5   // (mm) Always raise Z by at least this distance
-  #define NOZZLE_PARK_XY_FEEDRATE 400   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
-  #define NOZZLE_PARK_Z_FEEDRATE   40   // (mm/s) Z axis feedrate (not used for delta printers)
+  #define NOZZLE_PARK_XY_FEEDRATE 300   // (mm/s) X and Y axes feedrate (also used for delta Z axis)
+  #define NOZZLE_PARK_Z_FEEDRATE   30   // (mm/s) Z axis feedrate (not used for delta printers)
 #endif
 
 /**
