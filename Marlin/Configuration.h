@@ -777,7 +777,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 110, 110, 10, 110 }
+#define DEFAULT_MAX_FEEDRATE          { 160, 160, 40, 1100 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -790,11 +790,11 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 150, 150, 60, 225 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 250, 250, 35, 500 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
-  #define MAX_ACCEL_EDIT_VALUES       { 1000, 1000, 1000, 2000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 1000, 1000, 1000, 4000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -805,9 +805,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          175     // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  200     // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   200    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          300     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  400     // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   300    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
