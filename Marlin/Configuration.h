@@ -499,30 +499,26 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-#define DEFAULT_Kp 23.0701
-#define DEFAULT_Ki 2.3433
-#define DEFAULT_Kd 56.7814
+#define DEFAULT_Kp 20.3718
+#define DEFAULT_Ki 2.4157
+#define DEFAULT_Kd 42.9489
 
   #endif
 #endif // PIDTEMP
 
 /*
 
-PID Auto_tune 85%_fan, 200c_temp
-#define DEFAULT_Kp 21.6255
-#define DEFAULT_Ki 1.4185
-#define DEFAULT_Kd 82.4228
+#define DEFAULT_Kp 13.3952
+#define DEFAULT_Ki 1.2282
+#define DEFAULT_Kd 36.5220
 
-#define DEFAULT_Kp 22.1790
-#define DEFAULT_Ki 2.0430
-#define DEFAULT_Kd 60.1937
+#define DEFAULT_Kp 20.3718
+#define DEFAULT_Ki 2.4228
+#define DEFAULT_Kd 42.8241
 
-PID Auto_tune 100%_fan, 200c_temp
-#define DEFAULT_Kp 23.0701
-#define DEFAULT_Ki 2.3433
-#define DEFAULT_Kd 56.7814
-
-
+#define DEFAULT_Kp 20.3718
+#define DEFAULT_Ki 2.4157
+#define DEFAULT_Kd 42.9489
 
 
 */
@@ -777,11 +773,11 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 160, 160, 40, 1100 }
+#define DEFAULT_MAX_FEEDRATE          { 120, 120, 40, 6000 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 3000, 3000, 100, 2000 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 30000, 30000, 1000, 20000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -790,7 +786,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 250, 250, 35, 500 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 200, 200, 35, 350 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -805,9 +801,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          300     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          200     // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  400     // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   300    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION   200    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -831,7 +827,7 @@ PID Auto_tune 0%_fan, 90c_temp
   #endif
 #endif
 
-#define DEFAULT_EJERK    11.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    7.0  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
@@ -841,7 +837,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *   https://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
 #if DISABLED(CLASSIC_JERK)
-  #define JUNCTION_DEVIATION_MM 0.017 // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.015 // (mm) Distance from real junction edge
   #define JD_HANDLE_SMALL_SEGMENTS    // Use curvature estimation instead of just the junction angle
                                       // for small segments (< 1mm) with large junction angles (> 135°).
 #endif
@@ -1015,7 +1011,7 @@ PID Auto_tune 0%_fan, 90c_temp
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 35, 5, -1.1750 }
+#define NOZZLE_TO_PROBE_OFFSET { 35, 5, -1.250 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1540,6 +1536,11 @@ PID Auto_tune 0%_fan, 90c_temp
 #define PREHEAT_2_TEMP_HOTEND 235
 #define PREHEAT_2_TEMP_BED    93
 #define PREHEAT_2_FAN_SPEED   0 // Value from 0 to 255
+
+#define PREHEAT_3_LABEL       "PP"
+#define PREHEAT_3_TEMP_HOTEND 235
+#define PREHEAT_3_TEMP_BED    93
+#define PREHEAT_3_FAN_SPEED   0 // Value from 0 to 255
 
 /**
  * Nozzle Park
