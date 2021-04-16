@@ -342,7 +342,7 @@
     #define AUTO_POWER_CHAMBER_FAN
     //#define AUTO_POWER_E_TEMP        50 // (°C) Turn on PSU over this temperature
     //#define AUTO_POWER_CHAMBER_TEMP  30 // (°C) Turn on PSU over this temperature
-    #define POWER_TIMEOUT 30
+    #define POWER_TIMEOUT 120
   #endif
 #endif
 
@@ -705,10 +705,10 @@ PID Auto_tune 0%_fan, 90c_temp
  */
 #define X_DRIVER_TYPE  DRV8825
 #define Y_DRIVER_TYPE  DRV8825
-#define Z_DRIVER_TYPE  DRV8825
+#define Z_DRIVER_TYPE  TMC2100
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
-//#define Z2_DRIVER_TYPE A4988
+#define Z2_DRIVER_TYPE TMC2100
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE DRV8825
@@ -766,14 +766,14 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 800, 189.7 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 189.7 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 120, 120, 40, 6000 }
+#define DEFAULT_MAX_FEEDRATE          { 100, 100, 30, 5000 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -786,7 +786,7 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 200, 200, 35, 350 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 120, 120, 30, 250 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -801,9 +801,9 @@ PID Auto_tune 0%_fan, 90c_temp
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          200     // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  400     // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   200    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          100     // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  300     // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   120    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1113,13 +1113,13 @@ PID Auto_tune 0%_fan, 90c_temp
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false
 #define INVERT_Y_DIR true
-#define INVERT_Z_DIR false
+#define INVERT_Z_DIR true
 
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 #define INVERT_E0_DIR false
-#define INVERT_E1_DIR false
+#define INVERT_E1_DIR true
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
@@ -1397,8 +1397,8 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-#define MANUAL_X_HOME_POS -185
-#define MANUAL_Y_HOME_POS -19
+#define MANUAL_X_HOME_POS -95
+#define MANUAL_Y_HOME_POS -75
 //#define MANUAL_Z_HOME_POS 0
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
@@ -1413,8 +1413,8 @@ PID Auto_tune 0%_fan, 90c_temp
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 91  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 90  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 95  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 98  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
