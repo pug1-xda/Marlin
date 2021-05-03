@@ -1235,7 +1235,7 @@
   //#define LCD_DECIMAL_SMALL_XY
 
   // Add an 'M73' G-code to set the current percentage
-  //#define LCD_SET_PROGRESS_MANUALLY
+  #define LCD_SET_PROGRESS_MANUALLY
 
   // Show the E position (filament used) during printing
   #define LCD_SHOW_E_TOTAL
@@ -1852,13 +1852,12 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  #define PROBE_PT_1_X 15
-  #define PROBE_PT_1_Y 180
-  #define PROBE_PT_2_X 15
-  #define PROBE_PT_2_Y 20
-  #define PROBE_PT_3_X 170
-  
-  #define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X 100
+  #define PROBE_PT_1_Y 55
+  #define PROBE_PT_2_X 55
+  #define PROBE_PT_2_Y 155
+  #define PROBE_PT_3_X 145
+  #define PROBE_PT_3_Y 90
 #endif
 
 /**

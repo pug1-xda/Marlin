@@ -824,7 +824,12 @@ PID Auto_tune 0%_fan, 90c_temp
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 816.8 }
+
+/*
+Red Anodised Feeder
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 160, 160, 400, 189.7 }
+*/
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1073,11 +1078,11 @@ PID Auto_tune 0%_fan, 90c_temp
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 35, 5, -1.250 }
+#define NOZZLE_TO_PROBE_OFFSET { 32, 0, -0.950 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 45
+#define PROBING_MARGIN 25
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1215,7 +1220,7 @@ PID Auto_tune 0%_fan, 90c_temp
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1251,14 +1256,14 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // The size of the print bed
 #define X_BED_SIZE 180
-#define Y_BED_SIZE 180
+#define Y_BED_SIZE 190
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS 375
-#define Y_MAX_POS 240
+#define Y_MAX_POS 360
 #define Z_MAX_POS 250
 
 /**
@@ -1355,7 +1360,7 @@ PID Auto_tune 0%_fan, 90c_temp
   // After a runout is detected, continue printing this length of filament
   // before executing the runout script. Useful for a sensor at the end of
   // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
-  #define FILAMENT_RUNOUT_DISTANCE_MM 4
+  #define FILAMENT_RUNOUT_DISTANCE_MM 7
 
   #ifdef FILAMENT_RUNOUT_DISTANCE_MM
     // Enable this option to use an encoder disc that toggles the runout pin
@@ -1420,7 +1425,7 @@ PID Auto_tune 0%_fan, 90c_temp
 /**
  * Auto-leveling needs preheating
  */
-//#define PREHEAT_BEFORE_LEVELING
+#define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
   #define LEVELING_NOZZLE_TEMP 160   // (°C) Only applies to E0 at this time
   #define LEVELING_BED_TEMP     60
@@ -1444,7 +1449,7 @@ PID Auto_tune 0%_fan, 90c_temp
   // The height can be set with M420 Z<height>
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 5.0 // (mm) Default fade height.
   #endif
 
   // For Cartesian machines, instead of dividing moves on mesh boundaries,
@@ -1590,8 +1595,8 @@ PID Auto_tune 0%_fan, 90c_temp
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-#define MANUAL_X_HOME_POS -95
-#define MANUAL_Y_HOME_POS -75
+#define MANUAL_X_HOME_POS -89
+#define MANUAL_Y_HOME_POS -74
 //#define MANUAL_Z_HOME_POS 0
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
@@ -1606,12 +1611,12 @@ PID Auto_tune 0%_fan, 90c_temp
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 100  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 106  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT  99  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 105  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (70*60), (70*60), (7*60) }
+#define HOMING_FEEDRATE_MM_M { (75*60), (75*60), (8*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
