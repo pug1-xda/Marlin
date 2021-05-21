@@ -843,7 +843,7 @@ Red Anodised Feeder
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 100, 100, 30, 5000 }
+#define DEFAULT_MAX_FEEDRATE          { 105, 105, 30, 3000 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -856,7 +856,7 @@ Red Anodised Feeder
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 120, 120, 30, 250 } //prusa setting... M201 X1000 Y1000 E600
+#define DEFAULT_MAX_ACCELERATION      { 110, 110, 30, 200 } //prusa setting... M201 X1000 Y1000 E600
 
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -872,7 +872,7 @@ Red Anodised Feeder
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          100     // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  300     // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  200     // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   120    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
