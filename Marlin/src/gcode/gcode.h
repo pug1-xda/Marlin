@@ -633,13 +633,10 @@ private:
   #if ENABLED(PSU_CONTROL)
     static void M80();
   #endif
+
   static void M81();
-
-  #if HAS_EXTRUDERS
-    static void M82();
-    static void M83();
-  #endif
-
+  static void M82();
+  static void M83();
   static void M85();
   static void M92();
 
@@ -647,10 +644,9 @@ private:
     static void M100();
   #endif
 
-  #if HAS_EXTRUDERS
-    static void M104_M109(const bool isM109);
-    FORCE_INLINE static void M104() { M104_M109(false); }
-    FORCE_INLINE static void M109() { M104_M109(true); }
+  #if EXTRUDERS
+    static void M104();
+    static void M109();
   #endif
 
   static void M105();
@@ -700,9 +696,8 @@ private:
   #endif
 
   #if HAS_HEATED_BED
-    static void M140_M190(const bool isM190);
-    FORCE_INLINE static void M140() { M140_M190(false); }
-    FORCE_INLINE static void M190() { M140_M190(true); }
+    static void M140();
+    static void M190();
   #endif
 
   #if HAS_HEATED_CHAMBER
@@ -781,7 +776,7 @@ private:
 
   static void M220();
 
-  #if HAS_EXTRUDERS
+  #if EXTRUDERS
     static void M221();
   #endif
 

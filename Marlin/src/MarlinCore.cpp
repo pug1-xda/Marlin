@@ -1488,7 +1488,7 @@ void setup() {
   #endif
 
   #if HAS_TRINAMIC_CONFIG && DISABLED(PSU_DEFAULT_OFF)
-    SETUP_RUN(test_tmc_connection());
+    SETUP_RUN(test_tmc_connection(true, true, true, true));
   #endif
 
   #if HAS_DRIVER_SAFE_POWER_PROTECT

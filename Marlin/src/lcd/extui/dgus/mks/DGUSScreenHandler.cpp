@@ -342,7 +342,7 @@ void DGUSScreenHandler::GetTurnOffCtrl(DGUS_VP_Variable &var, void *val_ptr) {
 void DGUSScreenHandler::GetMinExtrudeTemp(DGUS_VP_Variable &var, void *val_ptr) {
   DEBUG_ECHOLNPGM("GetMinExtrudeTemp");
   const uint16_t value = swap16(*(uint16_t *)val_ptr);
-  TERN_(PREVENT_COLD_EXTRUSION, thermalManager.extrude_min_temp = value);
+  thermalManager.extrude_min_temp = value;
   mks_min_extrusion_temp = value;
   settings.save();
 }
@@ -1083,13 +1083,11 @@ void DGUSScreenHandler::HandleAccChange_MKS(DGUS_VP_Variable &var, void *val_ptr
   skipVP = var.VP; // don't overwrite value the next update time as the display might autoincrement in parallel
 }
 
-#if ENABLED(PREVENT_COLD_EXTRUSION)
-  void DGUSScreenHandler::HandleGetExMinTemp_MKS(DGUS_VP_Variable &var, void *val_ptr) {
-    const uint16_t value_ex_min_temp = swap16(*(uint16_t*)val_ptr);
-    thermalManager.extrude_min_temp = value_ex_min_temp;
-    skipVP = var.VP; // don't overwrite value the next update time as the display might autoincrement in parallel
-  }
-#endif
+void DGUSScreenHandler::HandleGetExMinTemp_MKS(DGUS_VP_Variable &var, void *val_ptr) {
+  const uint16_t value_ex_min_temp = swap16(*(uint16_t*)val_ptr);
+  thermalManager.extrude_min_temp = value_ex_min_temp;
+  skipVP = var.VP; // don't overwrite value the next update time as the display might autoincrement in parallel
+}
 
 #if HAS_PID_HEATING
   void DGUSScreenHandler::HandleTemperaturePIDChanged(DGUS_VP_Variable &var, void *val_ptr) {
@@ -1233,7 +1231,7 @@ void DGUSScreenHandler::MKS_FilamentLoadUnload(DGUS_VP_Variable &var, void *val_
       break;
   }
 
-  #if BOTH(HAS_HOTEND, PREVENT_COLD_EXTRUSION)
+  #if HAS_HOTEND
     if (hotend_too_cold) {
       if (thermalManager.targetTooColdToExtrude(hotend_too_cold - 1)) thermalManager.setTargetHotend(thermalManager.extrude_min_temp, hotend_too_cold - 1);
       sendinfoscreen(PSTR("NOTICE"), nullptr, PSTR("Please wait."), PSTR("Nozzle heating!"), true, true, true, true);
@@ -1430,10 +1428,8 @@ bool DGUSScreenHandler::loop() {
         #endif
       #endif
 
-      #if ENABLED(PREVENT_COLD_EXTRUSION)
-        if (mks_min_extrusion_temp != 0)
-          thermalManager.extrude_min_temp = mks_min_extrusion_temp;
-      #endif
+      if (mks_min_extrusion_temp != 0)
+        thermalManager.extrude_min_temp = mks_min_extrusion_temp;
 
       DGUS_ExtrudeLoadInit();
 
