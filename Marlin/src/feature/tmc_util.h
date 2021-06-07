@@ -70,9 +70,15 @@ class TMCStorage {
     }
 
     struct {
-      OPTCODE(HAS_STEALTHCHOP,  bool stealthChop_enabled = false)
-      OPTCODE(HYBRID_THRESHOLD, uint8_t hybrid_thrs = 0)
-      OPTCODE(USE_SENSORLESS,   int16_t homing_thrs = 0)
+      #if ENABLED(HAS_STEALTHCHOP)
+        bool stealthChop_enabled = false;
+      #endif
+      #if ENABLED(HYBRID_THRESHOLD)
+        uint8_t hybrid_thrs = 0;
+      #endif
+      #if ENABLED(USE_SENSORLESS)
+        int16_t homing_thrs = 0;
+      #endif
     } stored;
 };
 

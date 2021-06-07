@@ -674,11 +674,7 @@ private:
 
   static void M114();
   static void M115();
-
-  #if HAS_STATUS_MESSAGE
-    static void M117();
-  #endif
-
+  static void M117();
   static void M118();
   static void M119();
   static void M120();

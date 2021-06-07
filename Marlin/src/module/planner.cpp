@@ -1757,8 +1757,12 @@ void Planner::synchronize() {
  * Returns true if movement was properly queued, false otherwise (if cleaning)
  */
 bool Planner::_buffer_steps(const xyze_long_t &target
-  OPTARG(HAS_POSITION_FLOAT, const xyze_pos_t &target_float)
-  OPTARG(HAS_DIST_MM_ARG, const xyze_float_t &cart_dist_mm)
+  #if HAS_POSITION_FLOAT
+    , const xyze_pos_t &target_float
+  #endif
+  #if HAS_DIST_MM_ARG
+    , const xyze_float_t &cart_dist_mm
+  #endif
   , feedRate_t fr_mm_s, const uint8_t extruder, const_float_t millimeters
 ) {
 
@@ -1819,8 +1823,12 @@ bool Planner::_buffer_steps(const xyze_long_t &target
  */
 bool Planner::_populate_block(block_t * const block, bool split_move,
   const abce_long_t &target
-  OPTARG(HAS_POSITION_FLOAT, const xyze_pos_t &target_float)
-  OPTARG(HAS_DIST_MM_ARG, const xyze_float_t &cart_dist_mm)
+  #if HAS_POSITION_FLOAT
+    , const xyze_pos_t &target_float
+  #endif
+  #if HAS_DIST_MM_ARG
+    , const xyze_float_t &cart_dist_mm
+  #endif
   , feedRate_t fr_mm_s, const uint8_t extruder, const_float_t millimeters/*=0.0*/
 ) {
 
@@ -2755,7 +2763,9 @@ void Planner::buffer_sync_block(TERN_(LASER_SYNCHRONOUS_M106_M107, uint8_t sync_
  * Return 'false' if no segment was queued due to cleaning, cold extrusion, full queue, etc.
  */
 bool Planner::buffer_segment(const_float_t a, const_float_t b, const_float_t c, const_float_t e
-  OPTARG(HAS_DIST_MM_ARG, const xyze_float_t &cart_dist_mm)
+  #if HAS_DIST_MM_ARG
+    , const xyze_float_t &cart_dist_mm
+  #endif
   , const_feedRate_t fr_mm_s, const uint8_t extruder, const_float_t millimeters/*=0.0*/
 ) {
 
@@ -2847,7 +2857,9 @@ bool Planner::buffer_segment(const_float_t a, const_float_t b, const_float_t c, 
  *  inv_duration - the reciprocal if the duration of the movement, if known (kinematic only if feeedrate scaling is enabled)
  */
 bool Planner::buffer_line(const_float_t rx, const_float_t ry, const_float_t rz, const_float_t e, const_feedRate_t fr_mm_s, const uint8_t extruder, const float millimeters
-  OPTARG(SCARA_FEEDRATE_SCALING, const_float_t inv_duration)
+  #if ENABLED(SCARA_FEEDRATE_SCALING)
+    , const_float_t inv_duration
+  #endif
 ) {
   xyze_pos_t machine = { rx, ry, rz, e };
   TERN_(HAS_POSITION_MODIFIERS, apply_modifiers(machine));
